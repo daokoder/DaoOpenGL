@@ -1,0 +1,142 @@
+# Adapted from SDL library:
+
+load sys;
+load DaoSDL;
+load DaoOpenGL;
+
+global color = {
+	[ 1.0,  1.0,  0.0],
+	[ 1.0,  0.0,  0.0],
+	[ 0.0,  0.0,  0.0],
+	[ 0.0,  1.0,  0.0],
+	[ 0.0,  1.0,  1.0],
+	[ 1.0,  1.0,  1.0],
+	[ 1.0,  0.0,  1.0],
+	[ 0.0,  0.0,  1.0]
+};
+global cube = {
+	[ 0.5,  0.5, -0.5],
+	[ 0.5, -0.5, -0.5],
+	[-0.5, -0.5, -0.5],
+	[-0.5,  0.5, -0.5],
+	[-0.5,  0.5,  0.5],
+	[ 0.5,  0.5,  0.5],
+	[ 0.5, -0.5,  0.5],
+	[-0.5, -0.5,  0.5]
+};
+
+routine Box2()
+{
+	glBegin( GL_QUADS );
+	{
+		glColor3fv( color[0] );
+		glVertex3fv( cube[0] );
+		glColor3fv( color[1] );
+		glVertex3fv( cube[1] );
+		glColor3fv( color[2] );
+		glVertex3fv( cube[2] );
+		glColor3fv( color[3] );
+		glVertex3fv( cube[3] );
+
+		glColor3fv( color[3] );
+		glVertex3fv( cube[3] );
+		glColor3fv( color[4] );
+		glVertex3fv( cube[4] );
+		glColor3fv( color[7] );
+		glVertex3fv( cube[7] );
+		glColor3fv( color[2] );
+		glVertex3fv( cube[2] );
+
+		glColor3fv( color[0] );
+		glVertex3fv( cube[0] );
+		glColor3fv( color[5] );
+		glVertex3fv( cube[5] );
+		glColor3fv( color[6] );
+		glVertex3fv( cube[6] );
+		glColor3fv( color[1] );
+		glVertex3fv( cube[1] );
+
+		glColor3fv( color[5] );
+		glVertex3fv( cube[5] );
+		glColor3fv( color[4] );
+		glVertex3fv( cube[4] );
+		glColor3fv( color[7] );
+		glVertex3fv( cube[7] );
+		glColor3fv( color[6] );
+		glVertex3fv( cube[6] );
+
+		glColor3fv( color[5] );
+		glVertex3fv( cube[5] );
+		glColor3fv( color[0] );
+		glVertex3fv( cube[0] );
+		glColor3fv( color[3] );
+		glVertex3fv( cube[3] );
+		glColor3fv( color[4] );
+		glVertex3fv( cube[4] );
+
+		glColor3fv( color[6] );
+		glVertex3fv( cube[6] );
+		glColor3fv( color[1] );
+		glVertex3fv( cube[1] );
+		glColor3fv( color[2] );
+		glVertex3fv( cube[2] );
+		glColor3fv( color[7] );
+		glVertex3fv( cube[7] );
+	}
+	glEnd( );
+	glMatrixMode(GL_MODELVIEW);
+	glRotatef(5.0, 1.0, 1.0, 1.0);
+}
+
+const WINDOW_WIDTH  = 640
+const WINDOW_HEIGHT = 480
+
+# Call this instead of exit(), so we can clean up SDL: atexit() is evil. 
+routine quit( rc :int )
+{
+    sys.exit(rc);
+}
+routine main()
+{
+
+    window = SDL_CreateWindow( ARGV[0], 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, 0 );
+    if( window == none ) quit(2);
+    renderer = SDL_CreateRenderer( window, 0, 0 );
+    if( renderer == none ) quit(2);
+
+	glViewport( 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT );
+	glMatrixMode( GL_PROJECTION );
+	glLoadIdentity( );
+	glOrtho( -1.0, 1.0, -1.0, 1.0, -20.0, 20.0 );
+	glEnable(GL_DEPTH_TEST);
+
+    # Main render loop 
+    event = SDL_Event();
+    done = 0;
+	timestamp = 0;
+    while (!done) {
+        # Check for events 
+		SDL_PollEvent(event);
+		switch( event.type ){
+		case SDL_KEYDOWN : io.writeln( "key pressed: ", event.key.keysym.sym );
+		case SDL_KEYUP : io.writeln( "key released: ", event.key.keysym.sym );
+						 if( event.key.keysym.sym == SDLK_ESCAPE ) break;
+		default : #io.writeln( "other event: ", event.type, "\t", SDL_KEYDOWN );
+		}
+		if( timestamp ){
+			if( event.key.keysym.sym == SDLK_ESCAPE ) break;
+			if( event.type != SDL_MOUSEMOTION or event.motion.timestamp == timestamp ) skip;
+		}
+
+		timestamp = event.motion.timestamp;
+		SDL_SetRenderDrawColor(renderer, 0xA0, 0xA0, 0xA0, 0xFF);
+		SDL_RenderClear(renderer);
+		glClearColor( 0.0, 0.0, 0.0, 1.0 );
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glDisable( GL_LIGHTING );
+		Box2();
+		SDL_RenderPresent(renderer);
+    }
+    quit(0);
+	io.writeln( "quit" );
+}
