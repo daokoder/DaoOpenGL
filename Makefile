@@ -3,9 +3,9 @@ CC = gcc
 CLANGDAO ?= clangdao
 
 INCLUDE = -I. -I/usr/local/dao/include -Iwrap
-LIB = -L. -L/usr/lib
-CFLAG = -c -fPIC
-LFLAG = -lGL -lGLU
+LIBS = -L. -L/usr/lib
+CFLAGS = -c -fPIC
+LFLAGS = -lGL -lGLU
 
 GL_INC =
 
@@ -14,17 +14,17 @@ TARGET = DaoOpenGL.so
 UNAME = $(shell uname)
 
 ifeq ($(UNAME), Linux)
-  CFLAG += -DUNIX
-  LFLAG += -fPIC -shared -Wl,-soname,libDaoOpenGL.so
+  CFLAGS += -DUNIX
+  LFLAGS += -fPIC -shared -Wl,-soname,libDaoOpenGL.so
   GL_INC += -I/usr/include/GL
 endif
 
 ifeq ($(UNAME), Darwin)
   TARGET = DaoOpenGL.dylib
-  CFLAG += -DUNIX -DMAC_OSX
-  LFLAG += -fPIC -dynamiclib -undefined dynamic_lookup -install_name libDaoOpenGL.dylib
+  CFLAGS += -DUNIX -DMAC_OSX
+  LFLAGS += -fPIC -dynamiclib -undefined dynamic_lookup -install_name libDaoOpenGL.dylib
   GL_INC += -I/System/Library/Frameworks/OpenGL.framework/Headers
-  LIB += -L/System/Library/Frameworks/OpenGL.framework/Libraries
+  LIBS += -L/System/Library/Frameworks/OpenGL.framework/Libraries
 endif
 
 INCLUDE += $(GL_INC)
@@ -41,7 +41,7 @@ all: $(TARGET)
 	$(CC) $(INCLUDE) -c $(CFLAGS) -o $@ $<
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(LIB) $(LFLAG) -o $@ $<
+	$(CC) $(LIBS) $(LFLAGS) -o $@ $(OBJECTS)
 
 bind:
 	@test -d wrap || mkdir wrap

@@ -587,7 +587,7 @@ static DaoFuncItem dao__Funcs[] =
 {
   { dao__glAccum, "glAccum( op :int, value :float )" },
   { dao__glAlphaFunc, "glAlphaFunc( func :int, ref :float )" },
-  { dao__glAreTexturesResident, "glAreTexturesResident( n :int, &textures :int, residences :string )=>int" },
+  { dao__glAreTexturesResident, "glAreTexturesResident( n :int, textures :array<int>, residences :string )=>int" },
   { dao__glArrayElement, "glArrayElement( i :int )" },
   { dao__glBegin, "glBegin( mode :int )" },
   { dao__glBindTexture, "glBindTexture( target :int, texture :int )" },
@@ -604,7 +604,7 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glClearDepth, "glClearDepth( depth :double )" },
   { dao__glClearIndex, "glClearIndex( c :float )" },
   { dao__glClearStencil, "glClearStencil( s :int )" },
-  { dao__glClipPlane, "glClipPlane( plane :int, &equation :double )" },
+  { dao__glClipPlane, "glClipPlane( plane :int, equation :array<double> )" },
   { dao__glColor3b, "glColor3b( red :int, green :int, blue :int )" },
   { dao__glColor3bv, "glColor3bv( v :array<int> )" },
   { dao__glColor3d, "glColor3d( red :double, green :double, blue :double )" },
@@ -642,14 +642,14 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glColorPointer, "glColorPointer( size :int, type :int, stride :int, pointer :cdata )" },
   { dao__glColorSubTable, "glColorSubTable( target :int, start :int, count :int, format :int, type :int, data :cdata )" },
   { dao__glColorTable, "glColorTable( target :int, internalformat :int, width :int, format :int, type :int, table :cdata )" },
-  { dao__glColorTableParameterfv, "glColorTableParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glColorTableParameteriv, "glColorTableParameteriv( target :int, pname :int, &params :int )" },
+  { dao__glColorTableParameterfv, "glColorTableParameterfv( target :int, pname :int, params :array<float> )" },
+  { dao__glColorTableParameteriv, "glColorTableParameteriv( target :int, pname :int, params :array<int> )" },
   { dao__glConvolutionFilter1D, "glConvolutionFilter1D( target :int, internalformat :int, width :int, format :int, type :int, image :cdata )" },
   { dao__glConvolutionFilter2D, "glConvolutionFilter2D( target :int, internalformat :int, width :int, height :int, format :int, type :int, image :cdata )" },
   { dao__glConvolutionParameterf, "glConvolutionParameterf( target :int, pname :int, params :float )" },
-  { dao__glConvolutionParameterfv, "glConvolutionParameterfv( target :int, pname :int, &params :float )" },
+  { dao__glConvolutionParameterfv, "glConvolutionParameterfv( target :int, pname :int, params :array<float> )" },
   { dao__glConvolutionParameteri, "glConvolutionParameteri( target :int, pname :int, params :int )" },
-  { dao__glConvolutionParameteriv, "glConvolutionParameteriv( target :int, pname :int, &params :int )" },
+  { dao__glConvolutionParameteriv, "glConvolutionParameteriv( target :int, pname :int, params :array<int> )" },
   { dao__glCopyColorSubTable, "glCopyColorSubTable( target :int, start :int, x :int, y :int, width :int )" },
   { dao__glCopyColorTable, "glCopyColorTable( target :int, internalformat :int, x :int, y :int, width :int )" },
   { dao__glCopyConvolutionFilter1D, "glCopyConvolutionFilter1D( target :int, internalformat :int, x :int, y :int, width :int )" },
@@ -662,7 +662,7 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glCopyTexSubImage3D, "glCopyTexSubImage3D( target :int, level :int, xoffset :int, yoffset :int, zoffset :int, x :int, y :int, width :int, height :int )" },
   { dao__glCullFace, "glCullFace( mode :int )" },
   { dao__glDeleteLists, "glDeleteLists( list :int, range :int )" },
-  { dao__glDeleteTextures, "glDeleteTextures( n :int, &textures :int )" },
+  { dao__glDeleteTextures, "glDeleteTextures( n :int, textures :array<int> )" },
   { dao__glDepthFunc, "glDepthFunc( func :int )" },
   { dao__glDepthMask, "glDepthMask( flag :int )" },
   { dao__glDepthRange, "glDepthRange( zNear :double, zFar :double )" },
@@ -692,58 +692,58 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glEvalMesh2, "glEvalMesh2( mode :int, i1 :int, i2 :int, j1 :int, j2 :int )" },
   { dao__glEvalPoint1, "glEvalPoint1( i :int )" },
   { dao__glEvalPoint2, "glEvalPoint2( i :int, j :int )" },
-  { dao__glFeedbackBuffer, "glFeedbackBuffer( size :int, type :int, &buffer :float )" },
+  { dao__glFeedbackBuffer, "glFeedbackBuffer( size :int, type :int, buffer :float )=>float" },
   { dao__glFinish, "glFinish(  )" },
   { dao__glFlush, "glFlush(  )" },
   { dao__glFogf, "glFogf( pname :int, param :float )" },
-  { dao__glFogfv, "glFogfv( pname :int, &params :float )" },
+  { dao__glFogfv, "glFogfv( pname :int, params :array<float> )" },
   { dao__glFogi, "glFogi( pname :int, param :int )" },
-  { dao__glFogiv, "glFogiv( pname :int, &params :int )" },
+  { dao__glFogiv, "glFogiv( pname :int, params :array<int> )" },
   { dao__glFrontFace, "glFrontFace( mode :int )" },
   { dao__glFrustum, "glFrustum( left :double, right :double, bottom :double, top :double, zNear :double, zFar :double )" },
   { dao__glGenLists, "glGenLists( range :int )=>int" },
-  { dao__glGenTextures, "glGenTextures( n :int, &textures :int )" },
+  { dao__glGenTextures, "glGenTextures( n :int, textures :int )=>int" },
   { dao__glGetBooleanv, "glGetBooleanv( pname :int, params :string )" },
-  { dao__glGetClipPlane, "glGetClipPlane( plane :int, &equation :double )" },
+  { dao__glGetClipPlane, "glGetClipPlane( plane :int, equation :double )=>double" },
   { dao__glGetColorTable, "glGetColorTable( target :int, format :int, type :int, table :cdata )" },
-  { dao__glGetColorTableParameterfv, "glGetColorTableParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glGetColorTableParameteriv, "glGetColorTableParameteriv( target :int, pname :int, &params :int )" },
+  { dao__glGetColorTableParameterfv, "glGetColorTableParameterfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetColorTableParameteriv, "glGetColorTableParameteriv( target :int, pname :int, params :int )=>int" },
   { dao__glGetConvolutionFilter, "glGetConvolutionFilter( target :int, format :int, type :int, image :cdata )" },
-  { dao__glGetConvolutionParameterfv, "glGetConvolutionParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glGetConvolutionParameteriv, "glGetConvolutionParameteriv( target :int, pname :int, &params :int )" },
-  { dao__glGetDoublev, "glGetDoublev( pname :int, &params :double )" },
+  { dao__glGetConvolutionParameterfv, "glGetConvolutionParameterfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetConvolutionParameteriv, "glGetConvolutionParameteriv( target :int, pname :int, params :int )=>int" },
+  { dao__glGetDoublev, "glGetDoublev( pname :int, params :double )=>double" },
   { dao__glGetError, "glGetError(  )=>int" },
-  { dao__glGetFloatv, "glGetFloatv( pname :int, &params :float )" },
+  { dao__glGetFloatv, "glGetFloatv( pname :int, params :float )=>float" },
   { dao__glGetHistogram, "glGetHistogram( target :int, reset :int, format :int, type :int, values :cdata )" },
-  { dao__glGetHistogramParameterfv, "glGetHistogramParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glGetHistogramParameteriv, "glGetHistogramParameteriv( target :int, pname :int, &params :int )" },
-  { dao__glGetIntegerv, "glGetIntegerv( pname :int, &params :int )" },
-  { dao__glGetLightfv, "glGetLightfv( light :int, pname :int, &params :float )" },
-  { dao__glGetLightiv, "glGetLightiv( light :int, pname :int, &params :int )" },
-  { dao__glGetMapdv, "glGetMapdv( target :int, query :int, &v :double )" },
-  { dao__glGetMapfv, "glGetMapfv( target :int, query :int, &v :float )" },
-  { dao__glGetMapiv, "glGetMapiv( target :int, query :int, &v :int )" },
-  { dao__glGetMaterialfv, "glGetMaterialfv( face :int, pname :int, &params :float )" },
-  { dao__glGetMaterialiv, "glGetMaterialiv( face :int, pname :int, &params :int )" },
+  { dao__glGetHistogramParameterfv, "glGetHistogramParameterfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetHistogramParameteriv, "glGetHistogramParameteriv( target :int, pname :int, params :int )=>int" },
+  { dao__glGetIntegerv, "glGetIntegerv( pname :int, params :int )=>int" },
+  { dao__glGetLightfv, "glGetLightfv( light :int, pname :int, params :float )=>float" },
+  { dao__glGetLightiv, "glGetLightiv( light :int, pname :int, params :int )=>int" },
+  { dao__glGetMapdv, "glGetMapdv( target :int, query :int, v :double )=>double" },
+  { dao__glGetMapfv, "glGetMapfv( target :int, query :int, v :float )=>float" },
+  { dao__glGetMapiv, "glGetMapiv( target :int, query :int, v :int )=>int" },
+  { dao__glGetMaterialfv, "glGetMaterialfv( face :int, pname :int, params :float )=>float" },
+  { dao__glGetMaterialiv, "glGetMaterialiv( face :int, pname :int, params :int )=>int" },
   { dao__glGetMinmax, "glGetMinmax( target :int, reset :int, format :int, type :int, values :cdata )" },
-  { dao__glGetMinmaxParameterfv, "glGetMinmaxParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glGetMinmaxParameteriv, "glGetMinmaxParameteriv( target :int, pname :int, &params :int )" },
-  { dao__glGetPixelMapfv, "glGetPixelMapfv( map :int, &values :float )" },
-  { dao__glGetPixelMapuiv, "glGetPixelMapuiv( map :int, &values :int )" },
-  { dao__glGetPixelMapusv, "glGetPixelMapusv( map :int, &values :int )" },
+  { dao__glGetMinmaxParameterfv, "glGetMinmaxParameterfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetMinmaxParameteriv, "glGetMinmaxParameteriv( target :int, pname :int, params :int )=>int" },
+  { dao__glGetPixelMapfv, "glGetPixelMapfv( map :int, values :float )=>float" },
+  { dao__glGetPixelMapuiv, "glGetPixelMapuiv( map :int, values :int )=>int" },
+  { dao__glGetPixelMapusv, "glGetPixelMapusv( map :int, values :int )=>int" },
   { dao__glGetPolygonStipple, "glGetPolygonStipple( mask :string )" },
   { dao__glGetSeparableFilter, "glGetSeparableFilter( target :int, format :int, type :int, row :cdata, column :cdata, span :cdata )" },
   { dao__glGetString, "glGetString( name :int )=>string" },
-  { dao__glGetTexEnvfv, "glGetTexEnvfv( target :int, pname :int, &params :float )" },
-  { dao__glGetTexEnviv, "glGetTexEnviv( target :int, pname :int, &params :int )" },
-  { dao__glGetTexGendv, "glGetTexGendv( coord :int, pname :int, &params :double )" },
-  { dao__glGetTexGenfv, "glGetTexGenfv( coord :int, pname :int, &params :float )" },
-  { dao__glGetTexGeniv, "glGetTexGeniv( coord :int, pname :int, &params :int )" },
+  { dao__glGetTexEnvfv, "glGetTexEnvfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetTexEnviv, "glGetTexEnviv( target :int, pname :int, params :int )=>int" },
+  { dao__glGetTexGendv, "glGetTexGendv( coord :int, pname :int, params :double )=>double" },
+  { dao__glGetTexGenfv, "glGetTexGenfv( coord :int, pname :int, params :float )=>float" },
+  { dao__glGetTexGeniv, "glGetTexGeniv( coord :int, pname :int, params :int )=>int" },
   { dao__glGetTexImage, "glGetTexImage( target :int, level :int, format :int, type :int, pixels :cdata )" },
-  { dao__glGetTexLevelParameterfv, "glGetTexLevelParameterfv( target :int, level :int, pname :int, &params :float )" },
-  { dao__glGetTexLevelParameteriv, "glGetTexLevelParameteriv( target :int, level :int, pname :int, &params :int )" },
-  { dao__glGetTexParameterfv, "glGetTexParameterfv( target :int, pname :int, &params :float )" },
-  { dao__glGetTexParameteriv, "glGetTexParameteriv( target :int, pname :int, &params :int )" },
+  { dao__glGetTexLevelParameterfv, "glGetTexLevelParameterfv( target :int, level :int, pname :int, params :float )=>float" },
+  { dao__glGetTexLevelParameteriv, "glGetTexLevelParameteriv( target :int, level :int, pname :int, params :int )=>int" },
+  { dao__glGetTexParameterfv, "glGetTexParameterfv( target :int, pname :int, params :float )=>float" },
+  { dao__glGetTexParameteriv, "glGetTexParameteriv( target :int, pname :int, params :int )=>int" },
   { dao__glHint, "glHint( target :int, mode :int )" },
   { dao__glHistogram, "glHistogram( target :int, width :int, internalformat :int, sink :int )" },
   { dao__glIndexMask, "glIndexMask( mask :int )" },
@@ -764,13 +764,13 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glIsList, "glIsList( list :int )=>int" },
   { dao__glIsTexture, "glIsTexture( texture :int )=>int" },
   { dao__glLightModelf, "glLightModelf( pname :int, param :float )" },
-  { dao__glLightModelfv, "glLightModelfv( pname :int, &params :float )" },
+  { dao__glLightModelfv, "glLightModelfv( pname :int, params :array<float> )" },
   { dao__glLightModeli, "glLightModeli( pname :int, param :int )" },
-  { dao__glLightModeliv, "glLightModeliv( pname :int, &params :int )" },
+  { dao__glLightModeliv, "glLightModeliv( pname :int, params :array<int> )" },
   { dao__glLightf, "glLightf( light :int, pname :int, param :float )" },
-  { dao__glLightfv, "glLightfv( light :int, pname :int, &params :float )" },
+  { dao__glLightfv, "glLightfv( light :int, pname :int, params :array<float> )" },
   { dao__glLighti, "glLighti( light :int, pname :int, param :int )" },
-  { dao__glLightiv, "glLightiv( light :int, pname :int, &params :int )" },
+  { dao__glLightiv, "glLightiv( light :int, pname :int, params :array<int> )" },
   { dao__glLineStipple, "glLineStipple( factor :int, pattern :int )" },
   { dao__glLineWidth, "glLineWidth( width :float )" },
   { dao__glListBase, "glListBase( base :int )" },
@@ -779,18 +779,18 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glLoadMatrixf, "glLoadMatrixf( m :array<float> )" },
   { dao__glLoadName, "glLoadName( name :int )" },
   { dao__glLogicOp, "glLogicOp( opcode :int )" },
-  { dao__glMap1d, "glMap1d( target :int, u1 :double, u2 :double, stride :int, order :int, &points :double )" },
-  { dao__glMap1f, "glMap1f( target :int, u1 :float, u2 :float, stride :int, order :int, &points :float )" },
-  { dao__glMap2d, "glMap2d( target :int, u1 :double, u2 :double, ustride :int, uorder :int, v1 :double, v2 :double, vstride :int, vorder :int, &points :double )" },
-  { dao__glMap2f, "glMap2f( target :int, u1 :float, u2 :float, ustride :int, uorder :int, v1 :float, v2 :float, vstride :int, vorder :int, &points :float )" },
+  { dao__glMap1d, "glMap1d( target :int, u1 :double, u2 :double, stride :int, order :int, points :array<double> )" },
+  { dao__glMap1f, "glMap1f( target :int, u1 :float, u2 :float, stride :int, order :int, points :array<float> )" },
+  { dao__glMap2d, "glMap2d( target :int, u1 :double, u2 :double, ustride :int, uorder :int, v1 :double, v2 :double, vstride :int, vorder :int, points :array<double> )" },
+  { dao__glMap2f, "glMap2f( target :int, u1 :float, u2 :float, ustride :int, uorder :int, v1 :float, v2 :float, vstride :int, vorder :int, points :array<float> )" },
   { dao__glMapGrid1d, "glMapGrid1d( un :int, u1 :double, u2 :double )" },
   { dao__glMapGrid1f, "glMapGrid1f( un :int, u1 :float, u2 :float )" },
   { dao__glMapGrid2d, "glMapGrid2d( un :int, u1 :double, u2 :double, vn :int, v1 :double, v2 :double )" },
   { dao__glMapGrid2f, "glMapGrid2f( un :int, u1 :float, u2 :float, vn :int, v1 :float, v2 :float )" },
   { dao__glMaterialf, "glMaterialf( face :int, pname :int, param :float )" },
-  { dao__glMaterialfv, "glMaterialfv( face :int, pname :int, &params :float )" },
+  { dao__glMaterialfv, "glMaterialfv( face :int, pname :int, params :array<float> )" },
   { dao__glMateriali, "glMateriali( face :int, pname :int, param :int )" },
-  { dao__glMaterialiv, "glMaterialiv( face :int, pname :int, &params :int )" },
+  { dao__glMaterialiv, "glMaterialiv( face :int, pname :int, params :array<int> )" },
   { dao__glMatrixMode, "glMatrixMode( mode :int )" },
   { dao__glMinmax, "glMinmax( target :int, internalformat :int, sink :int )" },
   { dao__glMultMatrixd, "glMultMatrixd( m :array<double> )" },
@@ -809,9 +809,9 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glNormalPointer, "glNormalPointer( type :int, stride :int, pointer :cdata )" },
   { dao__glOrtho, "glOrtho( left :double, right :double, bottom :double, top :double, zNear :double, zFar :double )" },
   { dao__glPassThrough, "glPassThrough( token :float )" },
-  { dao__glPixelMapfv, "glPixelMapfv( map :int, mapsize :int, &values :float )" },
-  { dao__glPixelMapuiv, "glPixelMapuiv( map :int, mapsize :int, &values :int )" },
-  { dao__glPixelMapusv, "glPixelMapusv( map :int, mapsize :int, &values :int )" },
+  { dao__glPixelMapfv, "glPixelMapfv( map :int, mapsize :int, values :array<float> )" },
+  { dao__glPixelMapuiv, "glPixelMapuiv( map :int, mapsize :int, values :array<int> )" },
+  { dao__glPixelMapusv, "glPixelMapusv( map :int, mapsize :int, values :array<int> )" },
   { dao__glPixelStoref, "glPixelStoref( pname :int, param :float )" },
   { dao__glPixelStorei, "glPixelStorei( pname :int, param :int )" },
   { dao__glPixelTransferf, "glPixelTransferf( pname :int, param :float )" },
@@ -825,7 +825,7 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glPopClientAttrib, "glPopClientAttrib(  )" },
   { dao__glPopMatrix, "glPopMatrix(  )" },
   { dao__glPopName, "glPopName(  )" },
-  { dao__glPrioritizeTextures, "glPrioritizeTextures( n :int, &textures :int, &priorities :float )" },
+  { dao__glPrioritizeTextures, "glPrioritizeTextures( n :int, textures :array<int>, priorities :array<float> )" },
   { dao__glPushAttrib, "glPushAttrib( mask :int )" },
   { dao__glPushClientAttrib, "glPushClientAttrib( mask :int )" },
   { dao__glPushMatrix, "glPushMatrix(  )" },
@@ -857,13 +857,13 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glReadBuffer, "glReadBuffer( mode :int )" },
   { dao__glReadPixels, "glReadPixels( x :int, y :int, width :int, height :int, format :int, type :int, pixels :cdata )" },
   { dao__glRectd, "glRectd( x1 :double, y1 :double, x2 :double, y2 :double )" },
-  { dao__glRectdv, "glRectdv( &v1 :double, &v2 :double )" },
+  { dao__glRectdv, "glRectdv( v1 :array<double>, v2 :array<double> )" },
   { dao__glRectf, "glRectf( x1 :float, y1 :float, x2 :float, y2 :float )" },
-  { dao__glRectfv, "glRectfv( &v1 :float, &v2 :float )" },
+  { dao__glRectfv, "glRectfv( v1 :array<float>, v2 :array<float> )" },
   { dao__glRecti, "glRecti( x1 :int, y1 :int, x2 :int, y2 :int )" },
-  { dao__glRectiv, "glRectiv( &v1 :int, &v2 :int )" },
+  { dao__glRectiv, "glRectiv( v1 :array<int>, v2 :array<int> )" },
   { dao__glRects, "glRects( x1 :int, y1 :int, x2 :int, y2 :int )" },
-  { dao__glRectsv, "glRectsv( &v1 :int, &v2 :int )" },
+  { dao__glRectsv, "glRectsv( v1 :array<int>, v2 :array<int> )" },
   { dao__glRenderMode, "glRenderMode( mode :int )=>int" },
   { dao__glResetHistogram, "glResetHistogram( target :int )" },
   { dao__glResetMinmax, "glResetMinmax( target :int )" },
@@ -872,7 +872,7 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glScaled, "glScaled( x :double, y :double, z :double )" },
   { dao__glScalef, "glScalef( x :float, y :float, z :float )" },
   { dao__glScissor, "glScissor( x :int, y :int, width :int, height :int )" },
-  { dao__glSelectBuffer, "glSelectBuffer( size :int, &buffer :int )" },
+  { dao__glSelectBuffer, "glSelectBuffer( size :int, buffer :int )=>int" },
   { dao__glSeparableFilter2D, "glSeparableFilter2D( target :int, internalformat :int, width :int, height :int, format :int, type :int, row :cdata, column :cdata )" },
   { dao__glShadeModel, "glShadeModel( mode :int )" },
   { dao__glStencilFunc, "glStencilFunc( func :int, ref :int, mask :int )" },
@@ -912,22 +912,22 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glTexCoord4sv, "glTexCoord4sv( v :array<int> )" },
   { dao__glTexCoordPointer, "glTexCoordPointer( size :int, type :int, stride :int, pointer :cdata )" },
   { dao__glTexEnvf, "glTexEnvf( target :int, pname :int, param :float )" },
-  { dao__glTexEnvfv, "glTexEnvfv( target :int, pname :int, &params :float )" },
+  { dao__glTexEnvfv, "glTexEnvfv( target :int, pname :int, params :array<float> )" },
   { dao__glTexEnvi, "glTexEnvi( target :int, pname :int, param :int )" },
-  { dao__glTexEnviv, "glTexEnviv( target :int, pname :int, &params :int )" },
+  { dao__glTexEnviv, "glTexEnviv( target :int, pname :int, params :array<int> )" },
   { dao__glTexGend, "glTexGend( coord :int, pname :int, param :double )" },
-  { dao__glTexGendv, "glTexGendv( coord :int, pname :int, &params :double )" },
+  { dao__glTexGendv, "glTexGendv( coord :int, pname :int, params :array<double> )" },
   { dao__glTexGenf, "glTexGenf( coord :int, pname :int, param :float )" },
-  { dao__glTexGenfv, "glTexGenfv( coord :int, pname :int, &params :float )" },
+  { dao__glTexGenfv, "glTexGenfv( coord :int, pname :int, params :array<float> )" },
   { dao__glTexGeni, "glTexGeni( coord :int, pname :int, param :int )" },
-  { dao__glTexGeniv, "glTexGeniv( coord :int, pname :int, &params :int )" },
+  { dao__glTexGeniv, "glTexGeniv( coord :int, pname :int, params :array<int> )" },
   { dao__glTexImage1D, "glTexImage1D( target :int, level :int, internalformat :int, width :int, border :int, format :int, type :int, pixels :cdata )" },
   { dao__glTexImage2D, "glTexImage2D( target :int, level :int, internalformat :int, width :int, height :int, border :int, format :int, type :int, pixels :cdata )" },
   { dao__glTexImage3D, "glTexImage3D( target :int, level :int, internalformat :int, width :int, height :int, depth :int, border :int, format :int, type :int, pixels :cdata )" },
   { dao__glTexParameterf, "glTexParameterf( target :int, pname :int, param :float )" },
-  { dao__glTexParameterfv, "glTexParameterfv( target :int, pname :int, &params :float )" },
+  { dao__glTexParameterfv, "glTexParameterfv( target :int, pname :int, params :array<float> )" },
   { dao__glTexParameteri, "glTexParameteri( target :int, pname :int, param :int )" },
-  { dao__glTexParameteriv, "glTexParameteriv( target :int, pname :int, &params :int )" },
+  { dao__glTexParameteriv, "glTexParameteriv( target :int, pname :int, params :array<int> )" },
   { dao__glTexSubImage1D, "glTexSubImage1D( target :int, level :int, xoffset :int, width :int, format :int, type :int, pixels :cdata )" },
   { dao__glTexSubImage2D, "glTexSubImage2D( target :int, level :int, xoffset :int, yoffset :int, width :int, height :int, format :int, type :int, pixels :cdata )" },
   { dao__glTexSubImage3D, "glTexSubImage3D( target :int, level :int, xoffset :int, yoffset :int, zoffset :int, width :int, height :int, depth :int, format :int, type :int, pixels :cdata )" },
@@ -1029,11 +1029,11 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glSecondaryColor3usv, "glSecondaryColor3usv( v :array<int> )" },
   { dao__glSecondaryColorPointer, "glSecondaryColorPointer( size :int, type :int, stride :int, pointer :cdata )" },
   { dao__glPointParameterf, "glPointParameterf( pname :int, param :float )" },
-  { dao__glPointParameterfv, "glPointParameterfv( pname :int, &params :float )" },
+  { dao__glPointParameterfv, "glPointParameterfv( pname :int, params :array<float> )" },
   { dao__glPointParameteri, "glPointParameteri( pname :int, param :int )" },
-  { dao__glPointParameteriv, "glPointParameteriv( pname :int, &params :int )" },
+  { dao__glPointParameteriv, "glPointParameteriv( pname :int, params :array<int> )" },
   { dao__glBlendFuncSeparate, "glBlendFuncSeparate( srcRGB :int, dstRGB :int, srcAlpha :int, dstAlpha :int )" },
-  { dao__glMultiDrawArrays, "glMultiDrawArrays( mode :int, &first :int, &count :int, primcount :int )" },
+  { dao__glMultiDrawArrays, "glMultiDrawArrays( mode :int, first :array<int>, count :array<int>, primcount :int )" },
   { dao__glWindowPos2d, "glWindowPos2d( x :double, y :double )" },
   { dao__glWindowPos2dv, "glWindowPos2dv( v :array<double> )" },
   { dao__glWindowPos2f, "glWindowPos2f( x :float, y :float )" },
@@ -1050,25 +1050,25 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glWindowPos3iv, "glWindowPos3iv( v :array<int> )" },
   { dao__glWindowPos3s, "glWindowPos3s( x :int, y :int, z :int )" },
   { dao__glWindowPos3sv, "glWindowPos3sv( v :array<int> )" },
-  { dao__glGenQueries, "glGenQueries( n :int, &ids :int )" },
-  { dao__glDeleteQueries, "glDeleteQueries( n :int, &ids :int )" },
+  { dao__glGenQueries, "glGenQueries( n :int, ids :int )=>int" },
+  { dao__glDeleteQueries, "glDeleteQueries( n :int, ids :array<int> )" },
   { dao__glIsQuery, "glIsQuery( id :int )=>int" },
   { dao__glBeginQuery, "glBeginQuery( target :int, id :int )" },
   { dao__glEndQuery, "glEndQuery( target :int )" },
-  { dao__glGetQueryiv, "glGetQueryiv( target :int, pname :int, &params :int )" },
-  { dao__glGetQueryObjectiv, "glGetQueryObjectiv( id :int, pname :int, &params :int )" },
-  { dao__glGetQueryObjectuiv, "glGetQueryObjectuiv( id :int, pname :int, &params :int )" },
+  { dao__glGetQueryiv, "glGetQueryiv( target :int, pname :int, params :int )=>int" },
+  { dao__glGetQueryObjectiv, "glGetQueryObjectiv( id :int, pname :int, params :int )=>int" },
+  { dao__glGetQueryObjectuiv, "glGetQueryObjectuiv( id :int, pname :int, params :int )=>int" },
   { dao__glBindBuffer, "glBindBuffer( target :int, buffer :int )" },
-  { dao__glDeleteBuffers, "glDeleteBuffers( n :int, &buffers :int )" },
-  { dao__glGenBuffers, "glGenBuffers( n :int, &buffers :int )" },
+  { dao__glDeleteBuffers, "glDeleteBuffers( n :int, buffers :array<int> )" },
+  { dao__glGenBuffers, "glGenBuffers( n :int, buffers :int )=>int" },
   { dao__glIsBuffer, "glIsBuffer( buffer :int )=>int" },
   { dao__glBufferData, "glBufferData( target :int, size :int, data :cdata, usage :int )" },
   { dao__glBufferSubData, "glBufferSubData( target :int, offset :int, size :int, data :cdata )" },
   { dao__glGetBufferSubData, "glGetBufferSubData( target :int, offset :int, size :int, data :cdata )" },
   { dao__glMapBuffer, "glMapBuffer( target :int, access :int )=>cdata" },
   { dao__glUnmapBuffer, "glUnmapBuffer( target :int )=>int" },
-  { dao__glGetBufferParameteriv, "glGetBufferParameteriv( target :int, pname :int, &params :int )" },
-  { dao__glDrawBuffers, "glDrawBuffers( n :int, &bufs :int )" },
+  { dao__glGetBufferParameteriv, "glGetBufferParameteriv( target :int, pname :int, params :int )=>int" },
+  { dao__glDrawBuffers, "glDrawBuffers( n :int, bufs :array<int> )" },
   { dao__glVertexAttrib1d, "glVertexAttrib1d( index :int, x :double )" },
   { dao__glVertexAttrib1dv, "glVertexAttrib1dv( index :int, v :array<double> )" },
   { dao__glVertexAttrib1f, "glVertexAttrib1f( index :int, x :float )" },
@@ -1108,9 +1108,9 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glVertexAttribPointer, "glVertexAttribPointer( index :int, size :int, type :int, normalized :int, stride :int, pointer :cdata )" },
   { dao__glEnableVertexAttribArray, "glEnableVertexAttribArray( index :int )" },
   { dao__glDisableVertexAttribArray, "glDisableVertexAttribArray( index :int )" },
-  { dao__glGetVertexAttribdv, "glGetVertexAttribdv( index :int, pname :int, &params :double )" },
-  { dao__glGetVertexAttribfv, "glGetVertexAttribfv( index :int, pname :int, &params :float )" },
-  { dao__glGetVertexAttribiv, "glGetVertexAttribiv( index :int, pname :int, &params :int )" },
+  { dao__glGetVertexAttribdv, "glGetVertexAttribdv( index :int, pname :int, params :double )=>double" },
+  { dao__glGetVertexAttribfv, "glGetVertexAttribfv( index :int, pname :int, params :float )=>float" },
+  { dao__glGetVertexAttribiv, "glGetVertexAttribiv( index :int, pname :int, params :int )=>int" },
   { dao__glDeleteShader, "glDeleteShader( shader :int )" },
   { dao__glDetachShader, "glDetachShader( program :int, shader :int )" },
   { dao__glCreateShader, "glCreateShader( type :int )=>int" },
@@ -1137,33 +1137,33 @@ static DaoFuncItem dao__Funcs[] =
   { dao__glUniform2iv, "glUniform2iv( location :int, count :int, value :array<int> )" },
   { dao__glUniform3iv, "glUniform3iv( location :int, count :int, value :array<int> )" },
   { dao__glUniform4iv, "glUniform4iv( location :int, count :int, value :array<int> )" },
-  { dao__glUniformMatrix2fv, "glUniformMatrix2fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix3fv, "glUniformMatrix3fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix4fv, "glUniformMatrix4fv( location :int, count :int, transpose :int, &value :float )" },
+  { dao__glUniformMatrix2fv, "glUniformMatrix2fv( location :int, count :int, transpose :int, value :array<float> )" },
+  { dao__glUniformMatrix3fv, "glUniformMatrix3fv( location :int, count :int, transpose :int, value :array<float> )" },
+  { dao__glUniformMatrix4fv, "glUniformMatrix4fv( location :int, count :int, transpose :int, value :array<float> )" },
   { dao__glIsShader, "glIsShader( shader :int )=>int" },
   { dao__glIsProgram, "glIsProgram( program :int )=>int" },
-  { dao__glGetShaderiv, "glGetShaderiv( shader :int, pname :int, &params :int )" },
-  { dao__glGetProgramiv, "glGetProgramiv( program :int, pname :int, &params :int )" },
-  { dao__glGetAttachedShaders, "glGetAttachedShaders( program :int, maxCount :int, &count :int, &shaders :int )" },
-  { dao__glGetShaderInfoLog, "glGetShaderInfoLog( shader :int, bufSize :int, &length :int, infoLog :string )" },
-  { dao__glGetProgramInfoLog, "glGetProgramInfoLog( program :int, bufSize :int, &length :int, infoLog :string )" },
+  { dao__glGetShaderiv, "glGetShaderiv( shader :int, pname :int, params :int )=>int" },
+  { dao__glGetProgramiv, "glGetProgramiv( program :int, pname :int, params :int )=>int" },
+  { dao__glGetAttachedShaders, "glGetAttachedShaders( program :int, maxCount :int, count :int, shaders :int )=>tuple<int,int>" },
+  { dao__glGetShaderInfoLog, "glGetShaderInfoLog( shader :int, bufSize :int, length :int, infoLog :string )=>int" },
+  { dao__glGetProgramInfoLog, "glGetProgramInfoLog( program :int, bufSize :int, length :int, infoLog :string )=>int" },
   { dao__glGetUniformLocation, "glGetUniformLocation( program :int, name :string )=>int" },
-  { dao__glGetActiveUniform, "glGetActiveUniform( program :int, index :int, bufSize :int, &length :int, &size :int, &type :int, name :string )" },
-  { dao__glGetUniformfv, "glGetUniformfv( program :int, location :int, &params :float )" },
-  { dao__glGetUniformiv, "glGetUniformiv( program :int, location :int, &params :int )" },
-  { dao__glGetShaderSource, "glGetShaderSource( shader :int, bufSize :int, &length :int, source :string )" },
+  { dao__glGetActiveUniform, "glGetActiveUniform( program :int, index :int, bufSize :int, length :int, size :int, type :int, name :string )=>tuple<int,int,int>" },
+  { dao__glGetUniformfv, "glGetUniformfv( program :int, location :int, params :float )=>float" },
+  { dao__glGetUniformiv, "glGetUniformiv( program :int, location :int, params :int )=>int" },
+  { dao__glGetShaderSource, "glGetShaderSource( shader :int, bufSize :int, length :int, source :string )=>int" },
   { dao__glBindAttribLocation, "glBindAttribLocation( program :int, index :int, name :string )" },
-  { dao__glGetActiveAttrib, "glGetActiveAttrib( program :int, index :int, bufSize :int, &length :int, &size :int, &type :int, name :string )" },
+  { dao__glGetActiveAttrib, "glGetActiveAttrib( program :int, index :int, bufSize :int, length :int, size :int, type :int, name :string )=>tuple<int,int,int>" },
   { dao__glGetAttribLocation, "glGetAttribLocation( program :int, name :string )=>int" },
   { dao__glStencilFuncSeparate, "glStencilFuncSeparate( face :int, func :int, ref :int, mask :int )" },
   { dao__glStencilOpSeparate, "glStencilOpSeparate( face :int, fail :int, zfail :int, zpass :int )" },
   { dao__glStencilMaskSeparate, "glStencilMaskSeparate( face :int, mask :int )" },
-  { dao__glUniformMatrix2x3fv, "glUniformMatrix2x3fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix3x2fv, "glUniformMatrix3x2fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix2x4fv, "glUniformMatrix2x4fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix4x2fv, "glUniformMatrix4x2fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix3x4fv, "glUniformMatrix3x4fv( location :int, count :int, transpose :int, &value :float )" },
-  { dao__glUniformMatrix4x3fv, "glUniformMatrix4x3fv( location :int, count :int, transpose :int, &value :float )" },
+  { dao__glUniformMatrix2x3fv, "glUniformMatrix2x3fv( location :int, count :int, transpose :int, value :float )=>float" },
+  { dao__glUniformMatrix3x2fv, "glUniformMatrix3x2fv( location :int, count :int, transpose :int, value :float )=>float" },
+  { dao__glUniformMatrix2x4fv, "glUniformMatrix2x4fv( location :int, count :int, transpose :int, value :float )=>float" },
+  { dao__glUniformMatrix4x2fv, "glUniformMatrix4x2fv( location :int, count :int, transpose :int, value :float )=>float" },
+  { dao__glUniformMatrix3x4fv, "glUniformMatrix3x4fv( location :int, count :int, transpose :int, value :float )=>float" },
+  { dao__glUniformMatrix4x3fv, "glUniformMatrix4x3fv( location :int, count :int, transpose :int, value :float )=>float" },
   { NULL, NULL }
 };
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
@@ -1186,13 +1186,12 @@ static void dao__glAlphaFunc( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glAreTexturesResident( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int textures = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
   unsigned char* residences = (unsigned char*) DaoValue_TryGetMBString( _p[2] );
+  const unsigned int* textures = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  GLboolean _glAreTexturesResident = glAreTexturesResident( n, &textures, residences );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)textures );
-  DaoString_SetMBS( (DaoString*)_p[2], (char*)residences );
-  DaoProcess_PutInteger( _proc, (int) _glAreTexturesResident );
+  GLboolean _glAreTexturesResident = glAreTexturesResident( n, textures, residences );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
+  DaoProcess_PutInteger( _proc, (daoint) _glAreTexturesResident );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glArrayElement( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1228,7 +1227,6 @@ static void dao__glBitmap( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned char* bitmap = (const unsigned char*) DaoValue_TryGetMBString( _p[6] );
 
   glBitmap( width, height, xorig, yorig, xmove, ymove, bitmap );
-  DaoString_SetMBS( (DaoString*)_p[6], (char*)bitmap );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBlendColor( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1331,10 +1329,10 @@ static void dao__glClearStencil( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glClipPlane( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int plane = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const double equation = (const double) DaoValue_TryGetDouble( _p[1] );
+  const double* equation = (const double*) DaoArray_ToDouble( (DaoArray*)_p[1] );
 
-  glClipPlane( plane, &equation );
-  DaoDouble_Set( (DaoDouble*)_p[1], (double)equation );
+  glClipPlane( plane, equation );
+  DaoArray_FromDouble( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glColor3b( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1453,7 +1451,7 @@ static void dao__glColor3uiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned int* v = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[0] );
 
   glColor3uiv( v );
-  DaoArray_FromSInt( (DaoArray*)_p[0] );
+  DaoArray_FromUInt( (DaoArray*)_p[0] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glColor3us( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1596,7 +1594,7 @@ static void dao__glColor4uiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned int* v = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[0] );
 
   glColor4uiv( v );
-  DaoArray_FromSInt( (DaoArray*)_p[0] );
+  DaoArray_FromUInt( (DaoArray*)_p[0] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glColor4us( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1673,20 +1671,20 @@ static void dao__glColorTableParameterfv( DaoProcess *_proc, DaoValue *_p[], int
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glColorTableParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glColorTableParameterfv( target, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glColorTableParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glColorTableParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glColorTableParameteriv( target, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glConvolutionFilter1D( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1727,10 +1725,10 @@ static void dao__glConvolutionParameterfv( DaoProcess *_proc, DaoValue *_p[], in
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glConvolutionParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glConvolutionParameterfv( target, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glConvolutionParameteri( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1746,10 +1744,10 @@ static void dao__glConvolutionParameteriv( DaoProcess *_proc, DaoValue *_p[], in
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glConvolutionParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glConvolutionParameteriv( target, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glCopyColorSubTable( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -1894,10 +1892,10 @@ static void dao__glDeleteLists( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glDeleteTextures( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int textures = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
+  const unsigned int* textures = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  glDeleteTextures( n, &textures );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)textures );
+  glDeleteTextures( n, textures );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glDepthFunc( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2005,7 +2003,6 @@ static void dao__glEdgeFlagv( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned char* flag = (const unsigned char*) DaoValue_TryGetMBString( _p[0] );
 
   glEdgeFlagv( flag );
-  DaoString_SetMBS( (DaoString*)_p[0], (char*)flag );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glEnable( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2138,7 +2135,7 @@ static void dao__glFeedbackBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
   float buffer = (float) DaoValue_TryGetFloat( _p[2] );
 
   glFeedbackBuffer( size, type, &buffer );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)buffer );
+  DaoProcess_PutFloat( _proc, (float) buffer );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glFinish( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2164,10 +2161,10 @@ static void dao__glFogf( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glFogfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[1] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[1] );
 
-  glFogfv( pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)params );
+  glFogfv( pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glFogi( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2181,10 +2178,10 @@ static void dao__glFogi( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glFogiv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[1] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[1] );
 
-  glFogiv( pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)params );
+  glFogiv( pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glFrontFace( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2211,7 +2208,7 @@ static void dao__glGenLists( DaoProcess *_proc, DaoValue *_p[], int _n )
   int range = (int) DaoValue_TryGetInteger( _p[0] );
 
   GLuint _glGenLists = glGenLists( range );
-  DaoProcess_PutInteger( _proc, (int) _glGenLists );
+  DaoProcess_PutInteger( _proc, (daoint) _glGenLists );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGenTextures( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2220,7 +2217,7 @@ static void dao__glGenTextures( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int textures = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   glGenTextures( n, &textures );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)textures );
+  DaoProcess_PutInteger( _proc, (daoint) textures );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetBooleanv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2229,7 +2226,6 @@ static void dao__glGetBooleanv( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned char* params = (unsigned char*) DaoValue_TryGetMBString( _p[1] );
 
   glGetBooleanv( pname, params );
-  DaoString_SetMBS( (DaoString*)_p[1], (char*)params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetClipPlane( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2238,7 +2234,7 @@ static void dao__glGetClipPlane( DaoProcess *_proc, DaoValue *_p[], int _n )
   double equation = (double) DaoValue_TryGetDouble( _p[1] );
 
   glGetClipPlane( plane, &equation );
-  DaoDouble_Set( (DaoDouble*)_p[1], (double)equation );
+  DaoProcess_PutDouble( _proc, (double) equation );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetColorTable( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2258,7 +2254,7 @@ static void dao__glGetColorTableParameterfv( DaoProcess *_proc, DaoValue *_p[], 
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetColorTableParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetColorTableParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2268,7 +2264,7 @@ static void dao__glGetColorTableParameteriv( DaoProcess *_proc, DaoValue *_p[], 
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetColorTableParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetConvolutionFilter( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2288,7 +2284,7 @@ static void dao__glGetConvolutionParameterfv( DaoProcess *_proc, DaoValue *_p[],
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetConvolutionParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetConvolutionParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2298,7 +2294,7 @@ static void dao__glGetConvolutionParameteriv( DaoProcess *_proc, DaoValue *_p[],
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetConvolutionParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetDoublev( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2307,14 +2303,14 @@ static void dao__glGetDoublev( DaoProcess *_proc, DaoValue *_p[], int _n )
   double params = (double) DaoValue_TryGetDouble( _p[1] );
 
   glGetDoublev( pname, &params );
-  DaoDouble_Set( (DaoDouble*)_p[1], (double)params );
+  DaoProcess_PutDouble( _proc, (double) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetError( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
 
   GLenum _glGetError = glGetError(  );
-  DaoProcess_PutInteger( _proc, (int) _glGetError );
+  DaoProcess_PutInteger( _proc, (daoint) _glGetError );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetFloatv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2323,7 +2319,7 @@ static void dao__glGetFloatv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[1] );
 
   glGetFloatv( pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetHistogram( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2344,7 +2340,7 @@ static void dao__glGetHistogramParameterfv( DaoProcess *_proc, DaoValue *_p[], i
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetHistogramParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetHistogramParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2354,7 +2350,7 @@ static void dao__glGetHistogramParameteriv( DaoProcess *_proc, DaoValue *_p[], i
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetHistogramParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetIntegerv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2363,7 +2359,7 @@ static void dao__glGetIntegerv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[1] );
 
   glGetIntegerv( pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetLightfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2373,7 +2369,7 @@ static void dao__glGetLightfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetLightfv( light, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetLightiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2383,7 +2379,7 @@ static void dao__glGetLightiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetLightiv( light, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMapdv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2393,7 +2389,7 @@ static void dao__glGetMapdv( DaoProcess *_proc, DaoValue *_p[], int _n )
   double v = (double) DaoValue_TryGetDouble( _p[2] );
 
   glGetMapdv( target, query, &v );
-  DaoDouble_Set( (DaoDouble*)_p[2], (double)v );
+  DaoProcess_PutDouble( _proc, (double) v );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMapfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2403,7 +2399,7 @@ static void dao__glGetMapfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float v = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetMapfv( target, query, &v );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)v );
+  DaoProcess_PutFloat( _proc, (float) v );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMapiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2413,7 +2409,7 @@ static void dao__glGetMapiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int v = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetMapiv( target, query, &v );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)v );
+  DaoProcess_PutInteger( _proc, (daoint) v );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMaterialfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2423,7 +2419,7 @@ static void dao__glGetMaterialfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetMaterialfv( face, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMaterialiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2433,7 +2429,7 @@ static void dao__glGetMaterialiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetMaterialiv( face, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMinmax( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2454,7 +2450,7 @@ static void dao__glGetMinmaxParameterfv( DaoProcess *_proc, DaoValue *_p[], int 
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetMinmaxParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetMinmaxParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2464,7 +2460,7 @@ static void dao__glGetMinmaxParameteriv( DaoProcess *_proc, DaoValue *_p[], int 
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetMinmaxParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetPixelMapfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2473,7 +2469,7 @@ static void dao__glGetPixelMapfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float values = (float) DaoValue_TryGetFloat( _p[1] );
 
   glGetPixelMapfv( map, &values );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)values );
+  DaoProcess_PutFloat( _proc, (float) values );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetPixelMapuiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2482,7 +2478,7 @@ static void dao__glGetPixelMapuiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int values = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   glGetPixelMapuiv( map, &values );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)values );
+  DaoProcess_PutInteger( _proc, (daoint) values );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetPixelMapusv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2491,7 +2487,7 @@ static void dao__glGetPixelMapusv( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned short values = (unsigned short) DaoValue_TryGetInteger( _p[1] );
 
   glGetPixelMapusv( map, &values );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)values );
+  DaoProcess_PutInteger( _proc, (daoint) values );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetPolygonStipple( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2499,7 +2495,6 @@ static void dao__glGetPolygonStipple( DaoProcess *_proc, DaoValue *_p[], int _n 
   unsigned char* mask = (unsigned char*) DaoValue_TryGetMBString( _p[0] );
 
   glGetPolygonStipple( mask );
-  DaoString_SetMBS( (DaoString*)_p[0], (char*)mask );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetSeparableFilter( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2529,7 +2524,7 @@ static void dao__glGetTexEnvfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetTexEnvfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexEnviv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2539,7 +2534,7 @@ static void dao__glGetTexEnviv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetTexEnviv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexGendv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2549,7 +2544,7 @@ static void dao__glGetTexGendv( DaoProcess *_proc, DaoValue *_p[], int _n )
   double params = (double) DaoValue_TryGetDouble( _p[2] );
 
   glGetTexGendv( coord, pname, &params );
-  DaoDouble_Set( (DaoDouble*)_p[2], (double)params );
+  DaoProcess_PutDouble( _proc, (double) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexGenfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2559,7 +2554,7 @@ static void dao__glGetTexGenfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetTexGenfv( coord, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexGeniv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2569,7 +2564,7 @@ static void dao__glGetTexGeniv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetTexGeniv( coord, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexImage( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2591,7 +2586,7 @@ static void dao__glGetTexLevelParameterfv( DaoProcess *_proc, DaoValue *_p[], in
   float params = (float) DaoValue_TryGetFloat( _p[3] );
 
   glGetTexLevelParameterfv( target, level, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexLevelParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2602,7 +2597,7 @@ static void dao__glGetTexLevelParameteriv( DaoProcess *_proc, DaoValue *_p[], in
   int params = (int) DaoValue_TryGetInteger( _p[3] );
 
   glGetTexLevelParameteriv( target, level, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[3], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexParameterfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2612,7 +2607,7 @@ static void dao__glGetTexParameterfv( DaoProcess *_proc, DaoValue *_p[], int _n 
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetTexParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetTexParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2622,7 +2617,7 @@ static void dao__glGetTexParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n 
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetTexParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glHint( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2754,7 +2749,7 @@ static void dao__glIsEnabled( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int cap = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsEnabled = glIsEnabled( cap );
-  DaoProcess_PutInteger( _proc, (int) _glIsEnabled );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsEnabled );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsList( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2762,7 +2757,7 @@ static void dao__glIsList( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int list = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsList = glIsList( list );
-  DaoProcess_PutInteger( _proc, (int) _glIsList );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsList );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsTexture( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2770,7 +2765,7 @@ static void dao__glIsTexture( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int texture = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsTexture = glIsTexture( texture );
-  DaoProcess_PutInteger( _proc, (int) _glIsTexture );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsTexture );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glLightModelf( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2784,10 +2779,10 @@ static void dao__glLightModelf( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glLightModelfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[1] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[1] );
 
-  glLightModelfv( pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)params );
+  glLightModelfv( pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glLightModeli( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2801,10 +2796,10 @@ static void dao__glLightModeli( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glLightModeliv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[1] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[1] );
 
-  glLightModeliv( pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)params );
+  glLightModeliv( pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glLightf( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2820,10 +2815,10 @@ static void dao__glLightfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int light = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glLightfv( light, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glLightfv( light, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glLighti( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2839,10 +2834,10 @@ static void dao__glLightiv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int light = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glLightiv( light, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glLightiv( light, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glLineStipple( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2910,10 +2905,10 @@ static void dao__glMap1d( DaoProcess *_proc, DaoValue *_p[], int _n )
   double u2 = (double) DaoValue_TryGetDouble( _p[2] );
   int stride = (int) DaoValue_TryGetInteger( _p[3] );
   int order = (int) DaoValue_TryGetInteger( _p[4] );
-  const double points = (const double) DaoValue_TryGetDouble( _p[5] );
+  const double* points = (const double*) DaoArray_ToDouble( (DaoArray*)_p[5] );
 
-  glMap1d( target, u1, u2, stride, order, &points );
-  DaoDouble_Set( (DaoDouble*)_p[5], (double)points );
+  glMap1d( target, u1, u2, stride, order, points );
+  DaoArray_FromDouble( (DaoArray*)_p[5] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMap1f( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2923,10 +2918,10 @@ static void dao__glMap1f( DaoProcess *_proc, DaoValue *_p[], int _n )
   float u2 = (float) DaoValue_TryGetFloat( _p[2] );
   int stride = (int) DaoValue_TryGetInteger( _p[3] );
   int order = (int) DaoValue_TryGetInteger( _p[4] );
-  const float points = (const float) DaoValue_TryGetFloat( _p[5] );
+  const float* points = (const float*) DaoArray_ToFloat( (DaoArray*)_p[5] );
 
-  glMap1f( target, u1, u2, stride, order, &points );
-  DaoFloat_Set( (DaoFloat*)_p[5], (float)points );
+  glMap1f( target, u1, u2, stride, order, points );
+  DaoArray_FromFloat( (DaoArray*)_p[5] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMap2d( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2940,10 +2935,10 @@ static void dao__glMap2d( DaoProcess *_proc, DaoValue *_p[], int _n )
   double v2 = (double) DaoValue_TryGetDouble( _p[6] );
   int vstride = (int) DaoValue_TryGetInteger( _p[7] );
   int vorder = (int) DaoValue_TryGetInteger( _p[8] );
-  const double points = (const double) DaoValue_TryGetDouble( _p[9] );
+  const double* points = (const double*) DaoArray_ToDouble( (DaoArray*)_p[9] );
 
-  glMap2d( target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, &points );
-  DaoDouble_Set( (DaoDouble*)_p[9], (double)points );
+  glMap2d( target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  DaoArray_FromDouble( (DaoArray*)_p[9] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMap2f( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -2957,10 +2952,10 @@ static void dao__glMap2f( DaoProcess *_proc, DaoValue *_p[], int _n )
   float v2 = (float) DaoValue_TryGetFloat( _p[6] );
   int vstride = (int) DaoValue_TryGetInteger( _p[7] );
   int vorder = (int) DaoValue_TryGetInteger( _p[8] );
-  const float points = (const float) DaoValue_TryGetFloat( _p[9] );
+  const float* points = (const float*) DaoArray_ToFloat( (DaoArray*)_p[9] );
 
-  glMap2f( target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, &points );
-  DaoFloat_Set( (DaoFloat*)_p[9], (float)points );
+  glMap2f( target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  DaoArray_FromFloat( (DaoArray*)_p[9] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMapGrid1d( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3018,10 +3013,10 @@ static void dao__glMaterialfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int face = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glMaterialfv( face, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glMaterialfv( face, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMateriali( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3037,10 +3032,10 @@ static void dao__glMaterialiv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int face = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glMaterialiv( face, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glMaterialiv( face, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glMatrixMode( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3200,30 +3195,30 @@ static void dao__glPixelMapfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int map = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   int mapsize = (int) DaoValue_TryGetInteger( _p[1] );
-  const float values = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* values = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glPixelMapfv( map, mapsize, &values );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)values );
+  glPixelMapfv( map, mapsize, values );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPixelMapuiv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int map = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   int mapsize = (int) DaoValue_TryGetInteger( _p[1] );
-  const unsigned int values = (const unsigned int) DaoValue_TryGetInteger( _p[2] );
+  const unsigned int* values = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[2] );
 
-  glPixelMapuiv( map, mapsize, &values );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)values );
+  glPixelMapuiv( map, mapsize, values );
+  DaoArray_FromUInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPixelMapusv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int map = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   int mapsize = (int) DaoValue_TryGetInteger( _p[1] );
-  const unsigned short values = (const unsigned short) DaoValue_TryGetInteger( _p[2] );
+  const unsigned short* values = (const unsigned short*) DaoArray_ToUShort( (DaoArray*)_p[2] );
 
-  glPixelMapusv( map, mapsize, &values );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)values );
+  glPixelMapusv( map, mapsize, values );
+  DaoArray_FromUShort( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPixelStoref( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3294,7 +3289,6 @@ static void dao__glPolygonStipple( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned char* mask = (const unsigned char*) DaoValue_TryGetMBString( _p[0] );
 
   glPolygonStipple( mask );
-  DaoString_SetMBS( (DaoString*)_p[0], (char*)mask );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPopAttrib( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3324,12 +3318,12 @@ static void dao__glPopName( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glPrioritizeTextures( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int textures = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float priorities = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* priorities = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
+  const unsigned int* textures = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  glPrioritizeTextures( n, &textures, &priorities );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)textures );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)priorities );
+  glPrioritizeTextures( n, textures, priorities );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPushAttrib( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3595,12 +3589,12 @@ static void dao__glRectd( DaoProcess *_proc, DaoValue *_p[], int _n )
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRectdv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
-  const double v1 = (const double) DaoValue_TryGetDouble( _p[0] );
-  const double v2 = (const double) DaoValue_TryGetDouble( _p[1] );
+  const double* v2 = (const double*) DaoArray_ToDouble( (DaoArray*)_p[1] );
+  const double* v1 = (const double*) DaoArray_ToDouble( (DaoArray*)_p[0] );
 
-  glRectdv( &v1, &v2 );
-  DaoDouble_Set( (DaoDouble*)_p[0], (double)v1 );
-  DaoDouble_Set( (DaoDouble*)_p[1], (double)v2 );
+  glRectdv( v1, v2 );
+  DaoArray_FromDouble( (DaoArray*)_p[0] );
+  DaoArray_FromDouble( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRectf( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3615,12 +3609,12 @@ static void dao__glRectf( DaoProcess *_proc, DaoValue *_p[], int _n )
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRectfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
-  const float v1 = (const float) DaoValue_TryGetFloat( _p[0] );
-  const float v2 = (const float) DaoValue_TryGetFloat( _p[1] );
+  const float* v2 = (const float*) DaoArray_ToFloat( (DaoArray*)_p[1] );
+  const float* v1 = (const float*) DaoArray_ToFloat( (DaoArray*)_p[0] );
 
-  glRectfv( &v1, &v2 );
-  DaoFloat_Set( (DaoFloat*)_p[0], (float)v1 );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)v2 );
+  glRectfv( v1, v2 );
+  DaoArray_FromFloat( (DaoArray*)_p[0] );
+  DaoArray_FromFloat( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRecti( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3635,12 +3629,12 @@ static void dao__glRecti( DaoProcess *_proc, DaoValue *_p[], int _n )
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRectiv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
-  const int v1 = (const int) DaoValue_TryGetInteger( _p[0] );
-  const int v2 = (const int) DaoValue_TryGetInteger( _p[1] );
+  const int* v2 = (const int*) DaoArray_ToSInt( (DaoArray*)_p[1] );
+  const int* v1 = (const int*) DaoArray_ToSInt( (DaoArray*)_p[0] );
 
-  glRectiv( &v1, &v2 );
-  DaoInteger_Set( (DaoInteger*)_p[0], (int)v1 );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)v2 );
+  glRectiv( v1, v2 );
+  DaoArray_FromSInt( (DaoArray*)_p[0] );
+  DaoArray_FromSInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRects( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3655,12 +3649,12 @@ static void dao__glRects( DaoProcess *_proc, DaoValue *_p[], int _n )
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRectsv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
-  const short v1 = (const short) DaoValue_TryGetInteger( _p[0] );
-  const short v2 = (const short) DaoValue_TryGetInteger( _p[1] );
+  const short* v2 = (const short*) DaoArray_ToSShort( (DaoArray*)_p[1] );
+  const short* v1 = (const short*) DaoArray_ToSShort( (DaoArray*)_p[0] );
 
-  glRectsv( &v1, &v2 );
-  DaoInteger_Set( (DaoInteger*)_p[0], (int)v1 );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)v2 );
+  glRectsv( v1, v2 );
+  DaoArray_FromSShort( (DaoArray*)_p[0] );
+  DaoArray_FromSShort( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glRenderMode( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3668,7 +3662,7 @@ static void dao__glRenderMode( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int mode = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLint _glRenderMode = glRenderMode( mode );
-  DaoProcess_PutInteger( _proc, (int) _glRenderMode );
+  DaoProcess_PutInteger( _proc, (daoint) _glRenderMode );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glResetHistogram( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -3739,7 +3733,7 @@ static void dao__glSelectBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int buffer = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   glSelectBuffer( size, &buffer );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)buffer );
+  DaoProcess_PutInteger( _proc, (daoint) buffer );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glSeparableFilter2D( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4075,10 +4069,10 @@ static void dao__glTexEnvfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glTexEnvfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glTexEnvfv( target, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexEnvi( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4094,10 +4088,10 @@ static void dao__glTexEnviv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glTexEnviv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glTexEnviv( target, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexGend( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4113,10 +4107,10 @@ static void dao__glTexGendv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int coord = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const double params = (const double) DaoValue_TryGetDouble( _p[2] );
+  const double* params = (const double*) DaoArray_ToDouble( (DaoArray*)_p[2] );
 
-  glTexGendv( coord, pname, &params );
-  DaoDouble_Set( (DaoDouble*)_p[2], (double)params );
+  glTexGendv( coord, pname, params );
+  DaoArray_FromDouble( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexGenf( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4132,10 +4126,10 @@ static void dao__glTexGenfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int coord = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glTexGenfv( coord, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glTexGenfv( coord, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexGeni( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4151,10 +4145,10 @@ static void dao__glTexGeniv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int coord = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glTexGeniv( coord, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glTexGeniv( coord, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexImage1D( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4215,10 +4209,10 @@ static void dao__glTexParameterfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[2] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[2] );
 
-  glTexParameterfv( target, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  glTexParameterfv( target, pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexParameteri( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -4234,10 +4228,10 @@ static void dao__glTexParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[1] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[2] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
 
-  glTexParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  glTexParameteriv( target, pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glTexSubImage1D( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5135,7 +5129,7 @@ static void dao__glSecondaryColor3uiv( DaoProcess *_proc, DaoValue *_p[], int _n
   const unsigned int* v = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[0] );
 
   glSecondaryColor3uiv( v );
-  DaoArray_FromSInt( (DaoArray*)_p[0] );
+  DaoArray_FromUInt( (DaoArray*)_p[0] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glSecondaryColor3us( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5176,10 +5170,10 @@ static void dao__glPointParameterf( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glPointParameterfv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const float params = (const float) DaoValue_TryGetFloat( _p[1] );
+  const float* params = (const float*) DaoArray_ToFloat( (DaoArray*)_p[1] );
 
-  glPointParameterfv( pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[1], (float)params );
+  glPointParameterfv( pname, params );
+  DaoArray_FromFloat( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glPointParameteri( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5193,10 +5187,10 @@ static void dao__glPointParameteri( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glPointParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int pname = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const int params = (const int) DaoValue_TryGetInteger( _p[1] );
+  const int* params = (const int*) DaoArray_ToSInt( (DaoArray*)_p[1] );
 
-  glPointParameteriv( pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)params );
+  glPointParameteriv( pname, params );
+  DaoArray_FromSInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBlendFuncSeparate( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5212,13 +5206,13 @@ static void dao__glBlendFuncSeparate( DaoProcess *_proc, DaoValue *_p[], int _n 
 static void dao__glMultiDrawArrays( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   unsigned int mode = (unsigned int) DaoValue_TryGetInteger( _p[0] );
-  const int first = (const int) DaoValue_TryGetInteger( _p[1] );
-  const int count = (const int) DaoValue_TryGetInteger( _p[2] );
   int primcount = (int) DaoValue_TryGetInteger( _p[3] );
+  const int* count = (const int*) DaoArray_ToSInt( (DaoArray*)_p[2] );
+  const int* first = (const int*) DaoArray_ToSInt( (DaoArray*)_p[1] );
 
-  glMultiDrawArrays( mode, &first, &count, primcount );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)first );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)count );
+  glMultiDrawArrays( mode, first, count, primcount );
+  DaoArray_FromSInt( (DaoArray*)_p[1] );
+  DaoArray_FromSInt( (DaoArray*)_p[2] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glWindowPos2d( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5359,16 +5353,16 @@ static void dao__glGenQueries( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int ids = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   glGenQueries( n, &ids );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)ids );
+  DaoProcess_PutInteger( _proc, (daoint) ids );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glDeleteQueries( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int ids = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
+  const unsigned int* ids = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  glDeleteQueries( n, &ids );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)ids );
+  glDeleteQueries( n, ids );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsQuery( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5376,7 +5370,7 @@ static void dao__glIsQuery( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int id = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsQuery = glIsQuery( id );
-  DaoProcess_PutInteger( _proc, (int) _glIsQuery );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsQuery );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBeginQuery( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5401,7 +5395,7 @@ static void dao__glGetQueryiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetQueryiv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetQueryObjectiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5411,7 +5405,7 @@ static void dao__glGetQueryObjectiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetQueryObjectiv( id, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetQueryObjectuiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5421,7 +5415,7 @@ static void dao__glGetQueryObjectuiv( DaoProcess *_proc, DaoValue *_p[], int _n 
   unsigned int params = (unsigned int) DaoValue_TryGetInteger( _p[2] );
 
   glGetQueryObjectuiv( id, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBindBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5435,10 +5429,10 @@ static void dao__glBindBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
 static void dao__glDeleteBuffers( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int buffers = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
+  const unsigned int* buffers = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  glDeleteBuffers( n, &buffers );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)buffers );
+  glDeleteBuffers( n, buffers );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGenBuffers( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5447,7 +5441,7 @@ static void dao__glGenBuffers( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int buffers = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   glGenBuffers( n, &buffers );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)buffers );
+  DaoProcess_PutInteger( _proc, (daoint) buffers );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5455,7 +5449,7 @@ static void dao__glIsBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int buffer = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsBuffer = glIsBuffer( buffer );
-  DaoProcess_PutInteger( _proc, (int) _glIsBuffer );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsBuffer );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBufferData( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5502,7 +5496,7 @@ static void dao__glUnmapBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int target = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glUnmapBuffer = glUnmapBuffer( target );
-  DaoProcess_PutInteger( _proc, (int) _glUnmapBuffer );
+  DaoProcess_PutInteger( _proc, (daoint) _glUnmapBuffer );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetBufferParameteriv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5512,16 +5506,16 @@ static void dao__glGetBufferParameteriv( DaoProcess *_proc, DaoValue *_p[], int 
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetBufferParameteriv( target, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glDrawBuffers( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
   int n = (int) DaoValue_TryGetInteger( _p[0] );
-  const unsigned int bufs = (const unsigned int) DaoValue_TryGetInteger( _p[1] );
+  const unsigned int* bufs = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
-  glDrawBuffers( n, &bufs );
-  DaoInteger_Set( (DaoInteger*)_p[1], (int)bufs );
+  glDrawBuffers( n, bufs );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glVertexAttrib1d( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5739,7 +5733,7 @@ static void dao__glVertexAttrib4Nuiv( DaoProcess *_proc, DaoValue *_p[], int _n 
   const unsigned int* v = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
   glVertexAttrib4Nuiv( index, v );
-  DaoArray_FromSInt( (DaoArray*)_p[1] );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glVertexAttrib4Nusv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5844,7 +5838,7 @@ static void dao__glVertexAttrib4uiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   const unsigned int* v = (const unsigned int*) DaoArray_ToUInt( (DaoArray*)_p[1] );
 
   glVertexAttrib4uiv( index, v );
-  DaoArray_FromSInt( (DaoArray*)_p[1] );
+  DaoArray_FromUInt( (DaoArray*)_p[1] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glVertexAttrib4usv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5889,7 +5883,7 @@ static void dao__glGetVertexAttribdv( DaoProcess *_proc, DaoValue *_p[], int _n 
   double params = (double) DaoValue_TryGetDouble( _p[2] );
 
   glGetVertexAttribdv( index, pname, &params );
-  DaoDouble_Set( (DaoDouble*)_p[2], (double)params );
+  DaoProcess_PutDouble( _proc, (double) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetVertexAttribfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5899,7 +5893,7 @@ static void dao__glGetVertexAttribfv( DaoProcess *_proc, DaoValue *_p[], int _n 
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetVertexAttribfv( index, pname, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetVertexAttribiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5909,7 +5903,7 @@ static void dao__glGetVertexAttribiv( DaoProcess *_proc, DaoValue *_p[], int _n 
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetVertexAttribiv( index, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glDeleteShader( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5932,7 +5926,7 @@ static void dao__glCreateShader( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int type = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLuint _glCreateShader = glCreateShader( type );
-  DaoProcess_PutInteger( _proc, (int) _glCreateShader );
+  DaoProcess_PutInteger( _proc, (daoint) _glCreateShader );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glCompileShader( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -5946,7 +5940,7 @@ static void dao__glCreateProgram( DaoProcess *_proc, DaoValue *_p[], int _n )
 {
 
   GLuint _glCreateProgram = glCreateProgram(  );
-  DaoProcess_PutInteger( _proc, (int) _glCreateProgram );
+  DaoProcess_PutInteger( _proc, (daoint) _glCreateProgram );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glAttachShader( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6146,10 +6140,10 @@ static void dao__glUniformMatrix2fv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int location = (int) DaoValue_TryGetInteger( _p[0] );
   int count = (int) DaoValue_TryGetInteger( _p[1] );
   unsigned char transpose = (unsigned char) DaoValue_TryGetInteger( _p[2] );
-  const float value = (const float) DaoValue_TryGetFloat( _p[3] );
+  const float* value = (const float*) DaoArray_ToFloat( (DaoArray*)_p[3] );
 
-  glUniformMatrix2fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  glUniformMatrix2fv( location, count, transpose, value );
+  DaoArray_FromFloat( (DaoArray*)_p[3] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix3fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6157,10 +6151,10 @@ static void dao__glUniformMatrix3fv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int location = (int) DaoValue_TryGetInteger( _p[0] );
   int count = (int) DaoValue_TryGetInteger( _p[1] );
   unsigned char transpose = (unsigned char) DaoValue_TryGetInteger( _p[2] );
-  const float value = (const float) DaoValue_TryGetFloat( _p[3] );
+  const float* value = (const float*) DaoArray_ToFloat( (DaoArray*)_p[3] );
 
-  glUniformMatrix3fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  glUniformMatrix3fv( location, count, transpose, value );
+  DaoArray_FromFloat( (DaoArray*)_p[3] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix4fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6168,10 +6162,10 @@ static void dao__glUniformMatrix4fv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int location = (int) DaoValue_TryGetInteger( _p[0] );
   int count = (int) DaoValue_TryGetInteger( _p[1] );
   unsigned char transpose = (unsigned char) DaoValue_TryGetInteger( _p[2] );
-  const float value = (const float) DaoValue_TryGetFloat( _p[3] );
+  const float* value = (const float*) DaoArray_ToFloat( (DaoArray*)_p[3] );
 
-  glUniformMatrix4fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  glUniformMatrix4fv( location, count, transpose, value );
+  DaoArray_FromFloat( (DaoArray*)_p[3] );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsShader( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6179,7 +6173,7 @@ static void dao__glIsShader( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int shader = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsShader = glIsShader( shader );
-  DaoProcess_PutInteger( _proc, (int) _glIsShader );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsShader );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glIsProgram( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6187,7 +6181,7 @@ static void dao__glIsProgram( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int program = (unsigned int) DaoValue_TryGetInteger( _p[0] );
 
   GLboolean _glIsProgram = glIsProgram( program );
-  DaoProcess_PutInteger( _proc, (int) _glIsProgram );
+  DaoProcess_PutInteger( _proc, (daoint) _glIsProgram );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetShaderiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6197,7 +6191,7 @@ static void dao__glGetShaderiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetShaderiv( shader, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetProgramiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6207,7 +6201,7 @@ static void dao__glGetProgramiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetProgramiv( program, pname, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetAttachedShaders( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6218,8 +6212,9 @@ static void dao__glGetAttachedShaders( DaoProcess *_proc, DaoValue *_p[], int _n
   unsigned int shaders = (unsigned int) DaoValue_TryGetInteger( _p[3] );
 
   glGetAttachedShaders( program, maxCount, &count, &shaders );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)count );
-  DaoInteger_Set( (DaoInteger*)_p[3], (int)shaders );
+  DaoProcess_NewInteger( _proc, (daoint)count );
+  DaoProcess_NewInteger( _proc, (daoint)shaders );
+  DaoProcess_PutTuple( _proc, -2 );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetShaderInfoLog( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6230,8 +6225,7 @@ static void dao__glGetShaderInfoLog( DaoProcess *_proc, DaoValue *_p[], int _n )
   char* infoLog = (char*) DaoValue_TryGetMBString( _p[3] );
 
   glGetShaderInfoLog( shader, bufSize, &length, infoLog );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)length );
-  DaoString_SetMBS( (DaoString*)_p[3], (char*)infoLog );
+  DaoProcess_PutInteger( _proc, (daoint) length );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetProgramInfoLog( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6242,8 +6236,7 @@ static void dao__glGetProgramInfoLog( DaoProcess *_proc, DaoValue *_p[], int _n 
   char* infoLog = (char*) DaoValue_TryGetMBString( _p[3] );
 
   glGetProgramInfoLog( program, bufSize, &length, infoLog );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)length );
-  DaoString_SetMBS( (DaoString*)_p[3], (char*)infoLog );
+  DaoProcess_PutInteger( _proc, (daoint) length );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetUniformLocation( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6252,8 +6245,7 @@ static void dao__glGetUniformLocation( DaoProcess *_proc, DaoValue *_p[], int _n
   const char* name = (const char*) DaoValue_TryGetMBString( _p[1] );
 
   GLint _glGetUniformLocation = glGetUniformLocation( program, name );
-  DaoString_SetMBS( (DaoString*)_p[1], (char*)name );
-  DaoProcess_PutInteger( _proc, (int) _glGetUniformLocation );
+  DaoProcess_PutInteger( _proc, (daoint) _glGetUniformLocation );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetActiveUniform( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6267,10 +6259,10 @@ static void dao__glGetActiveUniform( DaoProcess *_proc, DaoValue *_p[], int _n )
   char* name = (char*) DaoValue_TryGetMBString( _p[6] );
 
   glGetActiveUniform( program, index, bufSize, &length, &size, &type, name );
-  DaoInteger_Set( (DaoInteger*)_p[3], (int)length );
-  DaoInteger_Set( (DaoInteger*)_p[4], (int)size );
-  DaoInteger_Set( (DaoInteger*)_p[5], (int)type );
-  DaoString_SetMBS( (DaoString*)_p[6], (char*)name );
+  DaoProcess_NewInteger( _proc, (daoint)length );
+  DaoProcess_NewInteger( _proc, (daoint)size );
+  DaoProcess_NewInteger( _proc, (daoint)type );
+  DaoProcess_PutTuple( _proc, -3 );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetUniformfv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6280,7 +6272,7 @@ static void dao__glGetUniformfv( DaoProcess *_proc, DaoValue *_p[], int _n )
   float params = (float) DaoValue_TryGetFloat( _p[2] );
 
   glGetUniformfv( program, location, &params );
-  DaoFloat_Set( (DaoFloat*)_p[2], (float)params );
+  DaoProcess_PutFloat( _proc, (float) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetUniformiv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6290,7 +6282,7 @@ static void dao__glGetUniformiv( DaoProcess *_proc, DaoValue *_p[], int _n )
   int params = (int) DaoValue_TryGetInteger( _p[2] );
 
   glGetUniformiv( program, location, &params );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)params );
+  DaoProcess_PutInteger( _proc, (daoint) params );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetShaderSource( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6301,8 +6293,7 @@ static void dao__glGetShaderSource( DaoProcess *_proc, DaoValue *_p[], int _n )
   char* source = (char*) DaoValue_TryGetMBString( _p[3] );
 
   glGetShaderSource( shader, bufSize, &length, source );
-  DaoInteger_Set( (DaoInteger*)_p[2], (int)length );
-  DaoString_SetMBS( (DaoString*)_p[3], (char*)source );
+  DaoProcess_PutInteger( _proc, (daoint) length );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glBindAttribLocation( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6312,7 +6303,6 @@ static void dao__glBindAttribLocation( DaoProcess *_proc, DaoValue *_p[], int _n
   const char* name = (const char*) DaoValue_TryGetMBString( _p[2] );
 
   glBindAttribLocation( program, index, name );
-  DaoString_SetMBS( (DaoString*)_p[2], (char*)name );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetActiveAttrib( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6326,10 +6316,10 @@ static void dao__glGetActiveAttrib( DaoProcess *_proc, DaoValue *_p[], int _n )
   char* name = (char*) DaoValue_TryGetMBString( _p[6] );
 
   glGetActiveAttrib( program, index, bufSize, &length, &size, &type, name );
-  DaoInteger_Set( (DaoInteger*)_p[3], (int)length );
-  DaoInteger_Set( (DaoInteger*)_p[4], (int)size );
-  DaoInteger_Set( (DaoInteger*)_p[5], (int)type );
-  DaoString_SetMBS( (DaoString*)_p[6], (char*)name );
+  DaoProcess_NewInteger( _proc, (daoint)length );
+  DaoProcess_NewInteger( _proc, (daoint)size );
+  DaoProcess_NewInteger( _proc, (daoint)type );
+  DaoProcess_PutTuple( _proc, -3 );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glGetAttribLocation( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6338,8 +6328,7 @@ static void dao__glGetAttribLocation( DaoProcess *_proc, DaoValue *_p[], int _n 
   const char* name = (const char*) DaoValue_TryGetMBString( _p[1] );
 
   GLint _glGetAttribLocation = glGetAttribLocation( program, name );
-  DaoString_SetMBS( (DaoString*)_p[1], (char*)name );
-  DaoProcess_PutInteger( _proc, (int) _glGetAttribLocation );
+  DaoProcess_PutInteger( _proc, (daoint) _glGetAttribLocation );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glStencilFuncSeparate( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6378,7 +6367,7 @@ static void dao__glUniformMatrix2x3fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix2x3fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix3x2fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6389,7 +6378,7 @@ static void dao__glUniformMatrix3x2fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix3x2fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix2x4fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6400,7 +6389,7 @@ static void dao__glUniformMatrix2x4fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix2x4fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix4x2fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6411,7 +6400,7 @@ static void dao__glUniformMatrix4x2fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix4x2fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix3x4fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6422,7 +6411,7 @@ static void dao__glUniformMatrix3x4fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix3x4fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUniformMatrix4x3fv( DaoProcess *_proc, DaoValue *_p[], int _n )
@@ -6433,7 +6422,7 @@ static void dao__glUniformMatrix4x3fv( DaoProcess *_proc, DaoValue *_p[], int _n
   const float value = (const float) DaoValue_TryGetFloat( _p[3] );
 
   glUniformMatrix4x3fv( location, count, transpose, &value );
-  DaoFloat_Set( (DaoFloat*)_p[3], (float)value );
+  DaoProcess_PutFloat( _proc, (float) value );
 }
 #ifdef __cplusplus
 }
@@ -8494,29 +8483,23 @@ static DaoNumItem dao__Nums[] =
 };
 static const char *dao__Aliases[] = 
 {
-	"char", "__builtin_va_list",
-	"unsigned int", "GLenum",
-	"unsigned char", "GLboolean",
-	"unsigned int", "GLbitfield",
-	"signed char", "GLbyte",
-	"short", "GLshort",
+	"int", "GLenum",
+	"int", "GLboolean",
+	"int", "GLbitfield",
+	"int", "GLbyte",
+	"int", "GLshort",
 	"int", "GLint",
 	"int", "GLsizei",
-	"unsigned char", "GLubyte",
-	"unsigned short", "GLushort",
-	"unsigned int", "GLuint",
+	"int", "GLubyte",
+	"int", "GLushort",
+	"int", "GLuint",
 	"float", "GLfloat",
 	"float", "GLclampf",
 	"double", "GLdouble",
 	"double", "GLclampd",
-	"void", "GLvoid",
-	"long", "GLintptr",
-	"long", "GLsizeiptr",
-	"char", "GLchar",
-	"char", "GLcharARB",
-	"void", "GLhandleARB",
-	"long", "GLintptrARB",
-	"long", "GLsizeiptrARB",
+	"int", "GLintptr",
+	"int", "GLsizeiptr",
+	"int", "GLchar",
 	NULL
 };
 #ifdef __cplusplus

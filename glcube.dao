@@ -99,20 +99,44 @@ routine quit( rc :int )
 routine main()
 {
 
-    window = SDL_CreateWindow( ARGV[0], 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, 0 );
+	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 8);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
+    window = SDL_CreateWindow( ARGV[0], 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL );
     if( window == none ) quit(2);
-    renderer = SDL_CreateRenderer( window, 0, 0 );
+    renderer = SDL_CreateRenderer( window, 0, SDL_WINDOW_OPENGL );
     if( renderer == none ) quit(2);
+
+	glEnable (GL_POLYGON_SMOOTH);
+	glEnable (GL_BLEND);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glHint (GL_POLYGON_SMOOTH_HINT, GL_DONT_CARE);
 
 	glViewport( 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT );
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity( );
 	glOrtho( -1.0, 1.0, -1.0, 1.0, -20.0, 20.0 );
+
+#{
 	glEnable(GL_DEPTH_TEST);
 
-    # Main render loop 
-    event = SDL_Event();
-    done = 0;
+	glEnable(GL_BLEND);
+	glEnable(GL_MULTISAMPLE_ARB);
+	glBlendFunc( GL_SRC_ALPHA, GL_DST_ALPHA );
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable( GL_LINE_SMOOTH );
+	glEnable( GL_POINT_SMOOTH );
+	glEnable( GL_POLYGON_SMOOTH );
+	glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+	glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
+	glHint( GL_POLYGON_SMOOTH_HINT, GL_NICEST );
+#}
+
+# Main render loop 
+	event = SDL_Event();
+	done = 0;
 	timestamp = 0;
     while (!done) {
         # Check for events 
