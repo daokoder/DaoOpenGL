@@ -140,7 +140,7 @@ routine main()
 	timestamp = 0;
     while (!done) {
         # Check for events 
-		SDL_PollEvent(event);
+		if( SDL_PollEvent(event) == 0 ) skip;
 		switch( event.type ){
 		case SDL_KEYDOWN : io.writeln( "key pressed: ", event.key.keysym.sym );
 		case SDL_KEYUP : io.writeln( "key released: ", event.key.keysym.sym );
