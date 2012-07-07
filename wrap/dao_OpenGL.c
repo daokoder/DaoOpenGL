@@ -5331,7 +5331,7 @@ static void dao__glMapBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
   unsigned int access = (unsigned int) DaoValue_TryGetInteger( _p[1] );
 
   void* _glMapBuffer = glMapBuffer( target, access );
-  DaoProcess_PutCdata( _proc, (void*) _glMapBuffer, NULL );
+  DaoProcess_WrapCdata( _proc, (void*) _glMapBuffer, NULL );
 }
 /* /System/Library/Frameworks/OpenGL.framework/Headers/gl.h */
 static void dao__glUnmapBuffer( DaoProcess *_proc, DaoValue *_p[], int _n )
