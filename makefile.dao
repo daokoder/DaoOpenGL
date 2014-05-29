@@ -1,0 +1,29 @@
+
+project = DaoMake::Project( "DaoOpenGL" ) 
+
+daovm  = DaoMake::FindPackage( "Dao", $REQUIRED )
+opengl   = DaoMake::FindPackage( "OpenGL", $OPTIONAL )
+
+if( daovm == none or opengl == none ) return
+
+cflags = opengl.GetFlags( "OpenGL", $cflags )
+
+bind = project.AddCommand( 'wrap/dao_OpenGL.h: opengl.c', '@$(DAOMAKE) mkdir2 ./wrap/' )
+bind.AddCommand( '../../tools/clangdao/clangdao ' + cflags + ' opengl.c -o wrap/' )
+
+
+project.UseImportLibrary( daovm, "dao" )
+
+project.AddIncludePath( "." )
+project.AddIncludePath( "../../kernel" )
+project.AddIncludePath( "../../" )
+
+sources = { "wrap/dao_OpenGL.c", "wrap/dao_OpenGL2.c", "wrap/dao_OpenGL3.c" }
+
+daoopengl_objs = project.AddObjects( sources, { "wrap/dao_OpenGL.h" } )
+daoopengl_dll = project.AddSharedLibrary( "dao_opengl", daoopengl_objs )
+daoopengl_dll.UseSharedLibrary( opengl )
+
+project.Install( daovm.GetPath( "MOD-PATH" ), daoopengl_dll );
+
+project.GenerateFinder( $TRUE );
