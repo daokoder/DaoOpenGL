@@ -1,5 +1,5 @@
 
-#define module_name OpenGL
+#define module_name opengl
 #undef module_name
 
 #define dao_glColor3bv( v_dao_hint_array_3 ) glColor3bv(const GLbyte*)

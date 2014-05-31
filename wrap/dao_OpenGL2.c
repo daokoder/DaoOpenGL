@@ -1,4 +1,4 @@
-#include"dao_OpenGL.h"
+#include"dao_opengl.h"
 #ifdef __cplusplus
 extern "C"{
 #endif

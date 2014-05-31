@@ -9,7 +9,7 @@ if( daovm == none or opengl == none ) return
 cflags = opengl.GetFlags( "OpenGL", $cflags )
 
 if( DaoMake::IsFile( '../../tools/clangdao/clangdao' ) ){
-	bind = project.AddCommand( 'wrap/dao_OpenGL.h: opengl.c', '@$(DAOMAKE) mkdir2 ./wrap/' )
+	bind = project.AddCommand( 'wrap/dao_opengl.h: opengl.c', '@$(DAOMAKE) mkdir2 ./wrap/' )
 	bind.AddCommand( '../../tools/clangdao/clangdao ' + cflags + ' opengl.c -o wrap/' )
 }
 
@@ -20,9 +20,9 @@ project.AddIncludePath( "." )
 project.AddIncludePath( "../../kernel" )
 project.AddIncludePath( "../../" )
 
-sources = { "wrap/dao_OpenGL.c", "wrap/dao_OpenGL2.c", "wrap/dao_OpenGL3.c" }
+sources = { "wrap/dao_opengl.c", "wrap/dao_opengl2.c", "wrap/dao_opengl3.c" }
 
-daoopengl_objs = project.AddObjects( sources, { "wrap/dao_OpenGL.h" } )
+daoopengl_objs = project.AddObjects( sources, { "wrap/dao_opengl.h" } )
 daoopengl_dll = project.AddSharedLibrary( "dao_opengl", daoopengl_objs )
 daoopengl_dll.UseSharedLibrary( opengl )
 

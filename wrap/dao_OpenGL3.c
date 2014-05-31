@@ -1,4 +1,4 @@
-#include"dao_OpenGL.h"
+#include"dao_opengl.h"
 DaoRoutine* Dao_Get_Object_Method( DaoCdata *cd, DaoObject **obj, const char *name )
 {
   DaoRoutine *meth;
