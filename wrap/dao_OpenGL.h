@@ -30,10 +30,6 @@ extern DaoVmSpace *__daoVmSpace;
 #ifdef __cplusplus
 extern "C"{
 #endif
-extern DaoTypeBase *dao_imaxdiv_t_Typer;
-extern DaoTypeBase *dao___GLsync_Typer;
-extern DaoType *dao_type_imaxdiv_t;
-extern DaoType *dao_type___GLsync;
 #ifdef __cplusplus
 }
 #endif
