@@ -8,9 +8,9 @@ if( daovm == none or opengl == none ) return
 
 cflags = opengl.GetFlags( "OpenGL", $cflags )
 
-if( DaoMake::IsFile( '../../tools/clangdao/clangdao' ) ){
-	bind = project.AddCommand( 'wrap/dao_opengl.h: opengl.c', '@$(DAOMAKE) mkdir2 ./wrap/' )
-	bind.AddCommand( '../../tools/clangdao/clangdao ' + cflags + ' opengl.c -o wrap/' )
+if( DaoMake::IsFile( "../../tools/clangdao/clangdao" ) && DaoMake::IsOutOfSourceBuild() == 0 ){
+	bind = project.AddCommand( "wrap/dao_opengl.h: opengl.c", "@$(DAOMAKE) mkdir2 ./wrap/" )
+	bind.AddCommand( "../../tools/clangdao/clangdao " + cflags + " opengl.c -o wrap/" )
 }
 
 

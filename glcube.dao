@@ -145,7 +145,7 @@ routine main()
 		switch( event.type ){
 		case SDL_KEYDOWN : io.writeln( "key pressed: ", event.key.keysym.sym );
 		case SDL_KEYUP : io.writeln( "key released: ", event.key.keysym.sym );
-						 if( event.key.keysym.sym == SDLK_ESCAPE ) break;
+						 if( event.key.keysym.sym == SDLK_ESCAPE ) done = 1
 		default : #io.writeln( "other event: ", event.type, "\t", SDL_KEYDOWN );
 		}
 		if( timestamp ){
