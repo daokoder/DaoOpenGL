@@ -6,15 +6,18 @@ opengl   = DaoMake::FindPackage( "OpenGL", $OPTIONAL )
 
 if( daovm == none or opengl == none ) return
 
-cflags = opengl.GetFlags( "OpenGL", $cflags )
+project.UseImportLibrary( daovm, "dao" )
 
-if( DaoMake::IsFile( "../../tools/clangdao/clangdao" ) && DaoMake::IsOutOfSourceBuild() == 0 ){
-	bind = project.AddCommand( "wrap/dao_opengl.h: opengl.c", "@$(DAOMAKE) mkdir2 ./wrap/" )
-	bind.AddCommand( "../../tools/clangdao/clangdao " + cflags + " opengl.c -o wrap/" )
+cflags = opengl.MakeCompilingFlags()
+
+clangdao = project.MakeBuildPath( "../../bin/clangdao" )
+
+if( DaoMake::IsFile( clangdao ) && DaoMake::IsOutOfSourceBuild() == 0 ){
+	bind = project.AddCommand( "$(DAOMAKE_SOURCE_DIR)/wrap/dao_opengl.h: opengl.c", "@$(DAOMAKE) mkdir2 ./wrap/" )
+	bind.AddCommand( clangdao + " " + cflags + " opengl.c -o wrap/" )
 }
 
-
-project.UseImportLibrary( daovm, "dao" )
+project.SetTargetPath( "../../lib/dao/modules" )
 
 project.AddIncludePath( "." )
 project.AddIncludePath( "../../kernel" )
@@ -26,6 +29,6 @@ daoopengl_objs = project.AddObjects( sources, { "wrap/dao_opengl.h" } )
 daoopengl_dll = project.AddSharedLibrary( "dao_opengl", daoopengl_objs )
 daoopengl_dll.UseSharedLibrary( opengl )
 
-project.Install( daovm.GetPath( "MOD-PATH" ), daoopengl_dll );
+project.Install( DaoMake::Variables[ "INSTALL_MOD" ], daoopengl_dll );
 
 project.GenerateFinder( $TRUE );
